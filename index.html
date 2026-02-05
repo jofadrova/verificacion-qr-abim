@@ -83,7 +83,7 @@
       }
     })
     .then(r => r.json())
-    .then(data => {
+   .then(data => {
   if (!data.length) {
     app.classList.add("error");
     app.innerHTML = "<h1>❌ NO VÁLIDO</h1><p>Asociado no encontrado</p>";
@@ -93,50 +93,46 @@
   const a = data[0];
   app.classList.add("ok");
 
+  app.innerHTML = `
+    <h1>✅ CREDENCIAL VÁLIDA</h1>
 
-      app.innerHTML = `
-        <h1>✅ CREDENCIAL VÁLIDA</h1>
-        <div class="foto-container">
-          <img id="fotoAsociado" src="" alt="Foto del asociado">
-        </div>
+    <div class="foto-container">
+      <img id="fotoAsociado" alt="Foto del asociado">
+    </div>
 
-        <div class="label">Nombre</div>
-        <div class="value">${a.nombres} ${a.apellidos}</div>
+    <div class="label">Nombre</div>
+    <div class="value">${a.nombres} ${a.apellidos}</div>
 
-        <div class="label">CI</div>
-        <div class="value">${a.ci}</div>
+    <div class="label">CI</div>
+    <div class="value">${a.ci}</div>
 
-        <div class="label">Grado</div>
-        <div class="value">${a.grado}</div>
+    <div class="label">Grado</div>
+    <div class="value">${a.grado}</div>
 
-        <div class="label">Fuerza</div>
-        <div class="value">${a.fuerza}</div>
+    <div class="label">Fuerza</div>
+    <div class="value">${a.fuerza}</div>
 
-        <div class="label">Estado</div>
-        <div class="value">${a.estado}</div>
+    <div class="label">Estado</div>
+    <div class="value">${a.estado}</div>
 
-        <div class="label">Vigencia</div>
-        <div class="value">${a.vigencia}</div>
+    <div class="label">Vigencia</div>
+    <div class="value">${a.vigencia}</div>
 
-        <div class="footer">
-          Asociación Boliviana de Ingenieros Militares<br>
-          Verificación QR oficial
-        </div>
-      `;
-    })
-    .catch(err => {
-      console.error(err);
-      app.classList.add("error");
-      app.innerHTML = "<h1>❌ Error del sistema</h1>";
-    });
+    <div class="footer">
+      Asociación Boliviana de Ingenieros Militares<br>
+      Verificación QR oficial
+    </div>
+  `;
 
-    const foto = document.getElementById("fotoAsociado");
+  // ✅ AQUÍ MISMO (dentro del then)
+  const foto = document.getElementById("fotoAsociado");
 
-if (a.foto_asociado_url && a.foto_asociado_url.startsWith("http")) {
-  foto.src = a.foto_asociado_url;
-} else {
-  foto.style.display = "none";
-}
+  if (a.foto_asociado_url && a.foto_asociado_url.startsWith("http")) {
+    foto.src = a.foto_asociado_url;
+  } else {
+    foto.style.display = "none";
+  }
+})
 
   </script>
 </body>
