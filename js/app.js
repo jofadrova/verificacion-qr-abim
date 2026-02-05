@@ -27,6 +27,15 @@ fetch(`${SUPABASE_URL}/rest/v1/asociados?id=eq.${id}`, {
 
   const a = data[0];
 
+  const fotoImg = document.getElementById("fotoAsociado");
+
+if (data.foto_asociado_url) {
+  fotoImg.src = data.foto_asociado_url;
+  fotoImg.style.display = "block";
+} else {
+  fotoImg.style.display = "none";
+}
+
   contenedor.innerHTML = `
     <h2 class="ok">✔ Credencial válida</h2>
     <p><b>Nombre:</b> ${a.nombres} ${a.apellidos}</p>
