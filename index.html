@@ -128,6 +128,15 @@
       app.classList.add("error");
       app.innerHTML = "<h1>❌ Error del sistema</h1>";
     });
+
+    const foto = document.getElementById("fotoAsociado");
+
+if (a.foto_asociado_url && a.foto_asociado_url.startsWith("http")) {
+  foto.src = a.foto_asociado_url;
+} else {
+  foto.style.display = "none";
+}
+
   </script>
 </body>
 </html>
