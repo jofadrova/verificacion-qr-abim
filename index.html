@@ -76,7 +76,7 @@
       throw new Error("ID no proporcionado");
     }
 
-    fetch(`${SUPABASE_URL}/rest/v1/asociados?id=eq.${id}&estado=eq.REGULARIZADO`, {
+    fetch(`${SUPABASE_URL}/rest/v1/asociados_publicos?id=eq.${id}`, {
       headers: {
         apikey: SUPABASE_ANON_KEY,
         Authorization: `Bearer ${SUPABASE_ANON_KEY}`
