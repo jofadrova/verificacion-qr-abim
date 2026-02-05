@@ -84,14 +84,15 @@
     })
     .then(r => r.json())
     .then(data => {
-      if (!data.length) {
-        app.classList.add("error");
-        app.innerHTML = "<h1>❌ NO VÁLIDO</h1><p>Asociado no encontrado</p>";
-        return;
-      }
+  if (!data.length) {
+    app.classList.add("error");
+    app.innerHTML = "<h1>❌ NO VÁLIDO</h1><p>Asociado no encontrado</p>";
+    return;
+  }
 
-      const a = data[0];
-      app.classList.add("ok");
+  const a = data[0];
+  app.classList.add("ok");
+
 
       app.innerHTML = `
         <h1>✅ CREDENCIAL VÁLIDA</h1>
