@@ -103,6 +103,10 @@
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
 
+    if (id) {
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
     if (!id) {
       app.classList.add("rojo");
       app.innerHTML = "<h1>ID NO PROPORCIONADO</h1>";
